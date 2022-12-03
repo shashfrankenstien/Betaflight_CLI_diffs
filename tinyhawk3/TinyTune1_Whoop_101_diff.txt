@@ -13,7 +13,7 @@ defaults nosave
 board_name EMAXF411RX
 manufacturer_id EMAX
 mcu_id 005f002f3437510635313736
-signature 
+signature
 
 # name: Whoop 101
 
@@ -117,10 +117,10 @@ set osd_stat_bb_no = OFF
 set osd_stat_max_g_force = ON
 set osd_stat_total_time = ON
 set vtx_band = 5
-set vtx_channel = 4
+set vtx_channel = 1
 set vtx_power = 2
 set vtx_low_power_disarm = UNTIL_FIRST_ARM
-set vtx_freq = 5769
+set vtx_freq = 5658
 set vcd_video_system = NTSC
 set frsky_spi_tx_id = 120,175,1
 set frsky_spi_offset = -27
@@ -281,4 +281,4 @@ rateprofile 4
 
 # save configuration
 save
-# 
+#
