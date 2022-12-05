@@ -13,7 +13,7 @@ defaults nosave
 board_name EMAXF411RX
 manufacturer_id EMAX
 mcu_id 005f002f3437510635313736
-signature 
+signature
 
 # name: Whoop 101
 
@@ -89,7 +89,7 @@ set motor_pwm_protocol = DSHOT600
 set motor_poles = 12
 set vbat_max_cell_voltage = 440
 set vbat_min_cell_voltage = 320
-set vbat_warning_cell_voltage = 330
+set vbat_warning_cell_voltage = 325
 set small_angle = 80
 set simplified_gyro_filter_multiplier = 120
 set osd_warn_visual_beeper = OFF
@@ -164,28 +164,29 @@ set dterm_lpf1_dyn_min_hz = 82
 set dterm_lpf1_dyn_max_hz = 165
 set dterm_lpf1_static_hz = 82
 set dterm_lpf2_static_hz = 165
+set vbat_sag_compensation = 100
 set pidsum_limit = 1000
 set pidsum_limit_yaw = 1000
-set p_pitch = 51
-set i_pitch = 92
-set d_pitch = 51
-set f_pitch = 178
-set p_roll = 49
-set i_roll = 88
-set d_roll = 47
-set f_roll = 171
-set p_yaw = 49
-set i_yaw = 88
-set f_yaw = 171
+set p_pitch = 76
+set i_pitch = 136
+set d_pitch = 73
+set f_pitch = 203
+set p_roll = 73
+set i_roll = 130
+set d_roll = 67
+set f_roll = 195
+set p_yaw = 73
+set i_yaw = 130
+set f_yaw = 195
 set horizon_level_strength = 25
 set horizon_transition = 85
-set d_min_roll = 42
-set d_min_pitch = 46
+set d_min_roll = 50
+set d_min_pitch = 54
+set thrust_linear = 20
 set simplified_master_multiplier = 130
-set simplified_d_gain = 110
-set simplified_pi_gain = 85
-set simplified_dmax_gain = 30
-set simplified_feedforward_gain = 110
+set simplified_d_gain = 130
+set simplified_pi_gain = 125
+set simplified_feedforward_gain = 125
 set simplified_pitch_d_gain = 95
 set simplified_dterm_filter_multiplier = 110
 
@@ -196,6 +197,7 @@ set dterm_lpf1_dyn_min_hz = 67
 set dterm_lpf1_dyn_max_hz = 135
 set dterm_lpf1_static_hz = 67
 set dterm_lpf2_static_hz = 135
+set vbat_sag_compensation = 100
 set anti_gravity_gain = 4500
 set p_pitch = 73
 set i_pitch = 35
@@ -211,11 +213,12 @@ set d_yaw = 5
 set f_yaw = 5
 set d_min_roll = 35
 set d_min_pitch = 38
+set thrust_linear = 20
 set simplified_pids_mode = OFF
 set simplified_dterm_filter_multiplier = 90
 
 # restore original profile selection
-profile 2
+profile 1
 
 rateprofile 0
 
@@ -289,4 +292,4 @@ rateprofile 5
 
 # save configuration
 save
-# 
+#
