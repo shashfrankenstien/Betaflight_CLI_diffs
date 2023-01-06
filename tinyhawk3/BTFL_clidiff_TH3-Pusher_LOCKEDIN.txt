@@ -72,13 +72,13 @@ vtxtable powervalues 25 100 200 350
 vtxtable powerlabels 25 100 200 350
 
 # master
-set gyro_lpf1_static_hz = 337
-set gyro_lpf2_static_hz = 675
+set gyro_lpf1_static_hz = 325
+set gyro_lpf2_static_hz = 650
 set dyn_notch_count = 1
 set dyn_notch_q = 500
 set dyn_notch_max_hz = 800
-set gyro_lpf1_dyn_min_hz = 337
-set gyro_lpf1_dyn_max_hz = 675
+set gyro_lpf1_dyn_min_hz = 325
+set gyro_lpf1_dyn_max_hz = 650
 set acc_calibration = -59,15,-27,1
 set mag_hardware = NONE
 set baro_hardware = NONE
@@ -95,7 +95,7 @@ set vbat_min_cell_voltage = 332
 set vbat_warning_cell_voltage = 345
 set small_angle = 80
 set yaw_deadband = 1
-set simplified_gyro_filter_multiplier = 135
+set simplified_gyro_filter_multiplier = 130
 set osd_warn_visual_beeper = OFF
 set osd_warn_core_temp = OFF
 set osd_warn_rc_smoothing = OFF
@@ -176,29 +176,29 @@ set iterm_relax_cutoff = 6
 set pidsum_limit = 1000
 set pidsum_limit_yaw = 1000
 set throttle_boost = 20
-set p_pitch = 77
-set i_pitch = 96
-set d_pitch = 91
-set f_pitch = 223
+set p_pitch = 73
+set i_pitch = 92
+set d_pitch = 76
+set f_pitch = 213
 set p_roll = 67
 set i_roll = 83
-set d_roll = 75
+set d_roll = 70
 set f_roll = 195
 set p_yaw = 66
 set i_yaw = 94
-set f_yaw = 0
-set d_min_roll = 56
-set d_min_pitch = 67
+set f_yaw = 100
+set d_min_roll = 52
+set d_min_pitch = 56
 set thrust_linear = 10
 set feedforward_smooth_factor = 30
 set simplified_pids_mode = RP
 set simplified_master_multiplier = 130
 set simplified_i_gain = 70
-set simplified_d_gain = 145
+set simplified_d_gain = 135
 set simplified_pi_gain = 115
 set simplified_feedforward_gain = 125
-set simplified_pitch_d_gain = 105
-set simplified_pitch_pi_gain = 110
+set simplified_pitch_d_gain = 95
+set simplified_pitch_pi_gain = 105
 set simplified_dterm_filter_multiplier = 80
 
 profile 2
@@ -289,16 +289,18 @@ set yaw_srate = 80
 rateprofile 5
 
 # rateprofile 5
-set thr_mid = 72
+set thr_mid = 70
 set roll_rc_rate = 23
 set pitch_rc_rate = 23
 set yaw_rc_rate = 28
-set roll_expo = 72
-set pitch_expo = 72
+set roll_expo = 76
+set pitch_expo = 76
 set yaw_expo = 52
-set roll_srate = 101
-set pitch_srate = 101
+set roll_srate = 113
+set pitch_srate = 105
 set yaw_srate = 96
+set tpa_rate = 40
+set tpa_breakpoint = 1550
 
 # restore original rateprofile selection
 rateprofile 5
