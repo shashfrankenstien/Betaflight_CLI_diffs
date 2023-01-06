@@ -15,7 +15,7 @@ manufacturer_id EMAX
 mcu_id 005f002f3437510635313736
 signature 
 
-# name: TH3-Pusher
+# name: TH3
 
 # feature
 feature -RX_PARALLEL_PWM
@@ -137,7 +137,7 @@ set frsky_spi_tx_id = 120,175,1
 set frsky_spi_offset = -27
 set frsky_spi_bind_hop_data = 0,57,112,167,222,21,76,131,186,241,40,95,150,205,4,59,114,169,224,23,78,133,188,243,42,97,152,207,6,61,116,171,226,25,80,135,190,245,44,99,154,209,8,63,118,173,228,0,0,0
 set gyro_1_align_yaw = 1800
-set name = TH3-Pusher
+set name = TH3
 
 profile 0
 
