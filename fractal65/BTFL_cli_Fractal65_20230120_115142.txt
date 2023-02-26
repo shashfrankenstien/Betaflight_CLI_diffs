@@ -52,11 +52,14 @@ vtxtable powerlabels 0 RCE 25 100 400
 
 # master
 set gyro_lpf1_static_hz = 0
+set gyro_lpf2_static_hz = 425
 set dyn_notch_count = 1
 set dyn_notch_q = 500
 set dyn_notch_min_hz = 100
 set dyn_notch_max_hz = 300
-set acc_calibration = -71,0,42,1
+set gyro_lpf1_dyn_min_hz = 212
+set gyro_lpf1_dyn_max_hz = 425
+set acc_calibration = 25,39,44,1
 set dshot_bidir = ON
 set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
@@ -68,6 +71,7 @@ set yaw_motors_reversed = ON
 set small_angle = 180
 set deadband = 1
 set yaw_deadband = 1
+set simplified_gyro_filter_multiplier = 85
 set osd_warn_esc_fail = OFF
 set osd_warn_core_temp = OFF
 set osd_warn_rc_smoothing = OFF
@@ -196,25 +200,23 @@ set dterm_lpf1_dyn_max_hz = 120
 set dterm_lpf1_static_hz = 60
 set dterm_lpf2_static_hz = 120
 set vbat_sag_compensation = 100
-set p_pitch = 72
-set i_pitch = 130
-set d_pitch = 68
-set f_pitch = 168
-set p_roll = 69
-set i_roll = 124
-set d_roll = 66
-set f_roll = 162
-set p_yaw = 69
-set i_yaw = 124
-set f_yaw = 162
-set d_min_roll = 52
-set d_min_pitch = 53
+set p_pitch = 67
+set i_pitch = 120
+set d_pitch = 74
+set f_pitch = 156
+set p_roll = 64
+set i_roll = 115
+set d_roll = 65
+set f_roll = 150
+set p_yaw = 64
+set i_yaw = 115
+set f_yaw = 150
+set d_min_roll = 48
+set d_min_pitch = 55
 set d_max_advance = 0
-set simplified_master_multiplier = 135
+set simplified_master_multiplier = 125
 set simplified_d_gain = 130
 set simplified_pi_gain = 115
-set simplified_dmax_gain = 80
-set simplified_pitch_d_gain = 90
 set simplified_dterm_filter_multiplier = 80
 
 # restore original profile selection
@@ -269,18 +271,17 @@ set tpa_breakpoint = 1400
 rateprofile 5
 
 # rateprofile 5
-set thr_expo = 8
-set roll_rc_rate = 19
-set pitch_rc_rate = 19
+set thr_mid = 40
+set thr_expo = 6
+set roll_rc_rate = 17
+set pitch_rc_rate = 17
 set yaw_rc_rate = 21
 set roll_expo = 75
 set pitch_expo = 75
 set yaw_expo = 52
-set roll_srate = 99
-set pitch_srate = 99
+set roll_srate = 100
+set pitch_srate = 100
 set yaw_srate = 95
-set tpa_rate = 50
-set tpa_breakpoint = 1400
 
 # restore original rateprofile selection
 rateprofile 5

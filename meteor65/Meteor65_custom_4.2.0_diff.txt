@@ -120,9 +120,6 @@ beeper -CRASH_FLIP
 # beacon
 beacon RX_SET
 
-# map
-map TAER1234
-
 # serial
 serial 1 2048 115200 57600 0 115200
 
@@ -137,7 +134,7 @@ mode_color 6 1 13
 aux 0 0 0 1800 2100 0 0
 aux 1 1 1 900 1250 0 0
 aux 2 2 1 1300 1700 0 0
-aux 3 13 3 1500 2100 0 0
+aux 3 13 2 1500 2100 0 0
 aux 4 35 2 1400 2100 0 0
 
 # vtxtable
@@ -156,7 +153,7 @@ vtxtable powerlabels 25 200 500
 set dyn_notch_width_percent = 0
 set dyn_notch_q = 250
 set dyn_notch_min_hz = 90
-set acc_calibration = -12,53,162,1
+set acc_calibration = -66,133,310,1
 set mag_bustype = SPI
 set mag_i2c_device = 0
 set baro_spi_device = 0
@@ -169,7 +166,7 @@ set rx_spi_bus = 3
 set rx_spi_led_inversion = ON
 set adc_device = 1
 set blackbox_device = NONE
-set dshot_idle_value = 600
+set dshot_idle_value = 550
 set dshot_burst = AUTO
 set motor_pwm_protocol = DSHOT300
 set align_board_roll = 180
@@ -192,14 +189,14 @@ set sdcard_spi_bus = 0
 set osd_warn_esc_fail = OFF
 set osd_warn_core_temp = OFF
 set osd_vbat_pos = 6508
-set osd_rssi_pos = 2106
+set osd_rssi_pos = 2426
 set osd_tim_2_pos = 2455
-set osd_flymode_pos = 2082
-set osd_throttle_pos = 2425
+set osd_flymode_pos = 2401
+set osd_throttle_pos = 2422
 set osd_vtx_channel_pos = 2433
 set osd_crosshairs_pos = 2286
-set osd_craft_name_pos = 2091
-set osd_pidrate_profile_pos = 2402
+set osd_craft_name_pos = 2081
+set osd_pidrate_profile_pos = 2406
 set osd_warnings_pos = 2345
 set osd_stat_tim_1 = ON
 set osd_stat_bbox = OFF
@@ -211,9 +208,9 @@ set vtx_channel = 1
 set vtx_freq = 5658
 set vcd_video_system = NTSC
 set max7456_spi_bus = 2
-set frsky_spi_tx_id = 120,175
-set frsky_spi_offset = 48
-set frsky_spi_bind_hop_data = 0,57,112,167,222,21,76,131,186,241,40,95,150,205,4,59,114,169,224,23,78,133,188,243,42,97,152,207,6,61,116,171,226,25,80,135,190,245,44,99,154,209,8,63,118,173,228,0,0,0
+set frsky_spi_tx_id = 66,87
+set frsky_spi_offset = 4
+set frsky_spi_bind_hop_data = 0,30,60,91,120,150,180,210,5,35,65,95,125,155,185,215,10,40,70,100,130,160,190,221,15,45,75,105,135,165,195,225,20,50,80,110,140,170,200,230,25,55,85,115,145,175,205,0,0,0
 set cc2500_spi_chip_detect = OFF
 set dashboard_i2c_bus = 0
 set camera_control_key_delay = 200
@@ -249,6 +246,8 @@ set d_roll = 45
 set f_roll = 180
 set p_yaw = 50
 set f_yaw = 160
+set d_min_roll = 0
+set d_min_pitch = 0
 
 profile 2
 
@@ -320,8 +319,22 @@ set yaw_srate = 80
 
 rateprofile 5
 
+# rateprofile 5
+set thr_mid = 60
+set thr_expo = 10
+set rates_type = ACTUAL
+set roll_rc_rate = 18
+set pitch_rc_rate = 18
+set yaw_rc_rate = 21
+set roll_expo = 75
+set pitch_expo = 75
+set yaw_expo = 52
+set roll_srate = 100
+set pitch_srate = 100
+set yaw_srate = 96
+
 # restore original rateprofile selection
-rateprofile 1
+rateprofile 5
 
 # save configuration
 save

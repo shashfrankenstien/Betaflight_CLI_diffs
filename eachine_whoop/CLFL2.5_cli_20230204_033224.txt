@@ -1,0 +1,38 @@
+diff all
+# Cleanflight / SPRACINGF3 (SRF3) 2.5.0 Oct  1 2018 / 04:29:34 (08348b705) MSP API: 1.40
+
+mcu_id 003400365333570220303435
+defaults nosave
+
+feature -TELEMETRY
+serial 1 64 115200 57600 0 115200
+serial 2 64 115200 57600 0 115200
+rxrange 0 996 2021
+rxrange 1 996 2021
+rxrange 2 996 2021
+rxrange 3 996 2021
+set serialrx_provider = SBUS
+set deadband = 1
+set yaw_deadband = 1
+profile 0
+
+profile 1
+
+profile 2
+
+profile 0
+rateprofile 0
+
+rateprofile 1
+
+rateprofile 2
+
+rateprofile 3
+
+rateprofile 4
+
+rateprofile 5
+
+rateprofile 0
+save
+# 
