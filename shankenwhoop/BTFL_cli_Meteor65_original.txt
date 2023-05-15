@@ -1,7 +1,7 @@
 # diff all
 
 # version
-# Betaflight / STM32F411 (S411) 4.4.0 Jan 28 2023 / 23:16:44 (0151c3006) MSP API: 1.45
+# Betaflight / STM32F411 (S411) 4.4.0 Mar 10 2023 / 20:19:49 (4605309d8) MSP API: 1.45
 
 # config: YES
 
@@ -76,7 +76,7 @@ set gyro_lpf2_static_hz = 425
 set dyn_notch_max_hz = 630
 set gyro_lpf1_dyn_min_hz = 212
 set gyro_lpf1_dyn_max_hz = 425
-set acc_calibration = -1528,-673,1724,1
+set acc_calibration = -290,73,200,1
 set max_check = 1950
 set fpv_mix_degrees = 15
 set rx_spi_protocol = FRSKY_D
@@ -123,24 +123,24 @@ set dterm_lpf1_dyn_max_hz = 127
 set dterm_lpf1_static_hz = 63
 set dterm_lpf2_static_hz = 127
 set vbat_sag_compensation = 100
-set p_pitch = 82
-set i_pitch = 132
-set d_pitch = 77
-set f_pitch = 162
-set p_roll = 78
-set i_roll = 126
-set d_roll = 67
-set f_roll = 156
-set p_yaw = 78
-set i_yaw = 126
-set f_yaw = 156
-set d_min_roll = 50
-set d_min_pitch = 57
+set p_pitch = 91
+set i_pitch = 163
+set d_pitch = 80
+set f_pitch = 194
+set p_roll = 87
+set i_roll = 156
+set d_roll = 70
+set f_roll = 187
+set p_yaw = 87
+set i_yaw = 156
+set f_yaw = 187
+set d_min_roll = 52
+set d_min_pitch = 59
 set d_max_advance = 0
 set simplified_master_multiplier = 130
-set simplified_i_gain = 90
-set simplified_d_gain = 130
-set simplified_pi_gain = 135
+set simplified_d_gain = 135
+set simplified_pi_gain = 150
+set simplified_feedforward_gain = 120
 set simplified_dterm_filter_multiplier = 85
 set tpa_breakpoint = 1400
 
@@ -162,8 +162,8 @@ rateprofile 1
 
 # rateprofile 1
 set rateprofile_name = Whoop
-set thr_mid = 82
-set thr_expo = 10
+set thr_mid = 93
+set thr_expo = 4
 set roll_rc_rate = 17
 set pitch_rc_rate = 17
 set yaw_rc_rate = 21

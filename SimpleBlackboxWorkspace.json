@@ -1,0 +1,170 @@
+[
+    null,
+    {
+        "title": "General Response",
+        "graphConfig": [
+            {
+                "fields": [
+                    {
+                        "name": "gyroADC[0]",
+                        "smoothing": 3000,
+                        "curve": {
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "default": {
+                            "smoothing": 3000,
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "color": "#fb8072",
+                        "lineWidth": 1,
+                        "grid": false
+                    },
+                    {
+                        "name": "gyroADC[1]",
+                        "smoothing": 3000,
+                        "curve": {
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "default": {
+                            "smoothing": 3000,
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "color": "#8dd3c7",
+                        "lineWidth": 1,
+                        "grid": false
+                    },
+                    {
+                        "name": "gyroADC[2]",
+                        "smoothing": 3000,
+                        "curve": {
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "default": {
+                            "smoothing": 3000,
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "color": "#ffffb3",
+                        "lineWidth": 1,
+                        "grid": false
+                    }
+                ],
+                "height": 1,
+                "label": "Gyros"
+            },
+            {
+                "fields": [
+                    {
+                        "name": "axisP[all]",
+                        "smoothing": 3000,
+                        "curve": {
+                            "power": 0.3,
+                            "outputRange": 1
+                        },
+                        "default": {
+                            "smoothing": 3000,
+                            "power": 0.3,
+                            "outputRange": 1
+                        },
+                        "color": "#bc80bd",
+                        "lineWidth": 1,
+                        "grid": false
+                    },
+                    {
+                        "name": "axisD[all]",
+                        "smoothing": 3000,
+                        "curve": {
+                            "power": 0.3,
+                            "outputRange": 1
+                        },
+                        "default": {
+                            "smoothing": 3000,
+                            "power": 0.3,
+                            "outputRange": 1
+                        },
+                        "color": "#ccebc5",
+                        "lineWidth": 1,
+                        "grid": false
+                    }
+                ],
+                "height": 1,
+                "label": "Custom graph"
+            },
+            {
+                "fields": [
+                    {
+                        "name": "rcCommand[0]",
+                        "smoothing": 0,
+                        "curve": {
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "default": {
+                            "smoothing": 0,
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "color": "#fb8072",
+                        "lineWidth": 1,
+                        "grid": false
+                    },
+                    {
+                        "name": "rcCommand[1]",
+                        "smoothing": 0,
+                        "curve": {
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "default": {
+                            "smoothing": 0,
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "color": "#8dd3c7",
+                        "lineWidth": 1,
+                        "grid": false
+                    },
+                    {
+                        "name": "rcCommand[2]",
+                        "smoothing": 0,
+                        "curve": {
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "default": {
+                            "smoothing": 0,
+                            "power": 0.25,
+                            "outputRange": 1
+                        },
+                        "color": "#ffffb3",
+                        "lineWidth": 1,
+                        "grid": false
+                    },
+                    {
+                        "name": "rcCommand[3]",
+                        "smoothing": 0,
+                        "curve": {
+                            "power": 1,
+                            "outputRange": 1
+                        },
+                        "default": {
+                            "smoothing": 0,
+                            "power": 1,
+                            "outputRange": 1
+                        },
+                        "color": "#bebada",
+                        "lineWidth": 1,
+                        "grid": false
+                    }
+                ],
+                "height": 1,
+                "label": "RC Command"
+            }
+        ]
+    }
+]
