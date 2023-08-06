@@ -1,8 +1,9 @@
 # diff all
 
 # version
-# Betaflight / STM32F411SX1280 (S4SX) 4.3.1 Jul 13 2022 / 03:33:32 (8d4f005) MSP API: 1.44
-# config: manufacturer_id: HAMO, board_name: CRAZYBEEF4SX1280, version: 46f8bf07, date: 2022-08-12T16:05:06Z
+# Betaflight / STM32F411 (S411) 4.4.1 Apr 10 2023 / 21:36:21 (e43d591b2) MSP API: 1.45
+
+# config: YES
 
 # start the command batch
 batch start
@@ -15,7 +16,7 @@ manufacturer_id HAMO
 mcu_id 005700493032510c33383735
 signature 
 
-# name: Mobeetle6
+# name: Bubito-DF4
 
 # resources
 resource MOTOR 1 B08
@@ -24,7 +25,9 @@ resource MOTOR 3 B06
 resource MOTOR 4 B10
 
 # feature
+feature -RX_SERIAL
 feature -TELEMETRY
+feature RX_SPI
 
 # serial
 serial 1 2048 115200 57600 0 115200
@@ -33,18 +36,12 @@ serial 1 2048 115200 57600 0 115200
 beacon RX_LOST
 beacon RX_SET
 
-# map
-map TAER1234
-
 # aux
 aux 0 0 0 1800 2100 0 0
 aux 1 1 1 900 1200 0 0
-aux 2 35 2 1800 2100 0 0
-
-# adjrange
-adjrange 0 0 1 900 1200 12 1 0 0
-adjrange 1 0 1 1200 1800 12 1 0 0
-adjrange 2 0 1 1800 2100 12 1 0 0
+aux 2 2 1 1300 1700 0 0
+aux 3 13 2 1700 2100 0 0
+aux 4 35 3 1800 2100 0 0
 
 # vtxtable
 vtxtable bands 6
@@ -64,12 +61,11 @@ set gyro_lpf1_static_hz = 0
 set gyro_lpf2_static_hz = 0
 set dyn_notch_count = 1
 set dyn_notch_q = 500
-set gyro_lpf1_dyn_min_hz = 300
-set gyro_lpf1_dyn_max_hz = 550
-set acc_calibration = -189,68,108,1
+set acc_calibration = 57,13,-22,1
 set dshot_bidir = ON
 set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
+set motor_output_reordering = 2,3,0,1,4,5,6,7
 set align_board_yaw = 90
 set vbat_min_cell_voltage = 290
 set vbat_warning_cell_voltage = 310
@@ -77,31 +73,24 @@ set yaw_motors_reversed = ON
 set small_angle = 180
 set deadband = 1
 set yaw_deadband = 1
-set simplified_gyro_filter = OFF
-set osd_warn_batt_not_full = OFF
-set osd_warn_batt_warning = OFF
-set osd_warn_esc_fail = OFF
-set osd_warn_core_temp = OFF
 set osd_rssi_pos = 314
-set osd_link_quality_pos = 2392
-set osd_rssi_dbm_pos = 2360
-set osd_tim_2_pos = 2433
-set osd_flymode_pos = 2457
-set osd_throttle_pos = 2425
-set osd_vtx_channel_pos = 2305
-set osd_current_pos = 2336
-set osd_mah_drawn_pos = 2368
-set osd_craft_name_pos = 2442
-set osd_warnings_pos = 2345
-set osd_avg_cell_voltage_pos = 2401
-set osd_disarmed_pos = 2314
+set osd_link_quality_pos = 2391
+set osd_rssi_dbm_pos = 2424
+set osd_tim_2_pos = 2455
+set osd_flymode_pos = 2405
+set osd_throttle_pos = 2420
+set osd_vtx_channel_pos = 2433
+set osd_current_pos = 288
+set osd_mah_drawn_pos = 320
+set osd_craft_name_pos = 2081
+set osd_pidrate_profile_pos = 2401
+set osd_warnings_pos = 2313
+set osd_avg_cell_voltage_pos = 2412
+set osd_disarmed_pos = 2250
 set osd_esc_rpm_pos = 161
-set osd_core_temp_pos = 2328
-set osd_stat_tim_1 = ON
-set osd_stat_max_spd = OFF
-set osd_stat_battery = ON
-set osd_stat_bbox = OFF
-set osd_stat_bb_no = OFF
+set osd_core_temp_pos = 280
+set osd_canvas_width = 30
+set osd_canvas_height = 13
 set debug_mode = RX_EXPRESSLRS_SPI
 set vtx_band = 5
 set vtx_channel = 1
@@ -112,16 +101,17 @@ set vcd_video_system = NTSC
 set gyro_1_sensor_align = CW180FLIP
 set gyro_1_align_pitch = 1800
 set gyro_1_align_yaw = 1800
-set expresslrs_uid = 0,0,58,195,148,4
+set expresslrs_uid = 74,41,14,5,199,104
 set expresslrs_rate_index = 1
-set name = Mobeetle6
+set expresslrs_switch_mode = HYBRID
+set craft_name = Bubito-DF4
+set pilot_name = Shashank
 
 profile 0
 
 # profile 0
 set dterm_lpf1_static_hz = 0
 set vbat_sag_compensation = 100
-set anti_gravity_gain = 4500
 set iterm_relax_cutoff = 20
 set yaw_lowpass_hz = 0
 set p_pitch = 116
@@ -149,15 +139,51 @@ set simplified_dmax_gain = 0
 set simplified_feedforward_gain = 130
 set simplified_pitch_d_gain = 85
 set simplified_pitch_pi_gain = 90
+set tpa_breakpoint = 1250
 
 profile 1
 
+# profile 1
+set vbat_sag_compensation = 100
+set iterm_relax_cutoff = 12
+set p_pitch = 39
+set i_pitch = 63
+set d_pitch = 43
+set f_pitch = 96
+set p_roll = 37
+set i_roll = 60
+set d_roll = 37
+set f_roll = 92
+set p_yaw = 37
+set i_yaw = 60
+set f_yaw = 92
+set d_min_roll = 28
+set d_min_pitch = 32
+set simplified_master_multiplier = 70
+set simplified_i_gain = 90
+set simplified_d_gain = 135
+set simplified_pi_gain = 120
+set simplified_feedforward_gain = 110
+
 profile 2
 
+profile 3
+
 # restore original profile selection
-profile 0
+profile 1
 
 rateprofile 0
+
+# rateprofile 0
+set roll_rc_rate = 15
+set pitch_rc_rate = 15
+set yaw_rc_rate = 20
+set roll_expo = 75
+set pitch_expo = 75
+set yaw_expo = 52
+set roll_srate = 95
+set pitch_srate = 95
+set yaw_srate = 90
 
 rateprofile 1
 
@@ -171,13 +197,8 @@ set yaw_rc_rate = 100
 set roll_srate = 75
 set pitch_srate = 75
 set yaw_srate = 70
-set tpa_breakpoint = 1250
 
 rateprofile 3
-
-rateprofile 4
-
-rateprofile 5
 
 # restore original rateprofile selection
 rateprofile 0
