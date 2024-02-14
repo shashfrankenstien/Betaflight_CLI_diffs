@@ -1,0 +1,1 @@
+V6 Baby Turtle (CNCDrones) by Sub250gFPV on Thingiverse: https://www.thingiverse.com/thing:5427107
