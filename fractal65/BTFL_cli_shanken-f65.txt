@@ -14,7 +14,7 @@ defaults nosave
 board_name CRAZYBEEF4SX1280
 manufacturer_id HAMO
 mcu_id 0025005a5547501520333332
-signature 
+signature
 
 # name: shanken-f65
 
@@ -248,4 +248,4 @@ rateprofile 0
 
 # save configuration
 save
-# 
+#

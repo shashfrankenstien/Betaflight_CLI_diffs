@@ -16,7 +16,7 @@ defaults nosave
 board_name BETAFPVF411
 manufacturer_id BEFH
 mcu_id 004a004d3132510930313538
-signature 
+signature
 
 # name: beta-shanken-f65
 
@@ -147,4 +147,4 @@ rateprofile 0
 
 # save configuration
 save
-# 
+#
