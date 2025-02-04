@@ -1,9 +1,8 @@
 # diff all
 
 # version
-# Betaflight / STM32F411 (S411) 4.4.0 Feb 14 2023 / 05:25:45 (4605309d8) MSP API: 1.45
-
-# config: YES
+# Betaflight / STM32F411 (S411) 4.5.1 Jul 27 2024 / 04:14:28 (77d01ba3b) MSP API: 1.46
+# config rev: fb15bf8
 
 # start the command batch
 batch start
@@ -14,9 +13,12 @@ defaults nosave
 board_name BETAFPVF411
 manufacturer_id BEFH
 mcu_id 003e00623333510932363532
-signature 
+signature
 
 # name: Meteor75 Pro
+
+# feature
+feature OSD
 
 # serial
 serial 1 2048 115200 57600 0 115200
@@ -45,27 +47,25 @@ vtxtable powervalues 1 0 2 3 4
 vtxtable powerlabels 25 PIT 100 200 400
 
 # master
-set gyro_lpf1_static_hz = 350
-set gyro_lpf2_static_hz = 700
+set gyro_lpf1_static_hz = 300
+set gyro_lpf2_static_hz = 600
 set dyn_notch_count = 2
 set dyn_notch_min_hz = 150
 set dyn_notch_max_hz = 400
-set gyro_lpf1_dyn_min_hz = 350
-set gyro_lpf1_dyn_max_hz = 700
+set gyro_lpf1_dyn_min_hz = 300
+set gyro_lpf1_dyn_max_hz = 600
 set acc_calibration = -2,-33,47,1
 set blackbox_sample_rate = 1/2
 set dshot_idle_value = 600
 set dshot_bidir = ON
 set dshot_bitbang = ON
-set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
 set vbat_max_cell_voltage = 435
 set yaw_motors_reversed = ON
 set small_angle = 180
 set deadband = 1
 set yaw_deadband = 1
-set pid_process_denom = 1
-set simplified_gyro_filter_multiplier = 140
+set simplified_gyro_filter_multiplier = 120
 set osd_vbat_pos = 2433
 set osd_rssi_pos = 314
 set osd_link_quality_pos = 2391
@@ -76,6 +76,7 @@ set osd_remaining_time_estimate_pos = 33
 set osd_flymode_pos = 2405
 set osd_throttle_pos = 2420
 set osd_vtx_channel_pos = 2433
+set osd_crosshairs_pos = 384
 set osd_current_pos = 288
 set osd_mah_drawn_pos = 320
 set osd_craft_name_pos = 2081
@@ -106,40 +107,39 @@ set craft_name = Meteor75 Pro
 profile 0
 
 # profile 0
-set dterm_lpf1_dyn_min_hz = 105
-set dterm_lpf1_dyn_max_hz = 210
-set dterm_lpf1_static_hz = 105
-set dterm_lpf2_static_hz = 210
+set dterm_lpf1_dyn_min_hz = 90
+set dterm_lpf1_dyn_max_hz = 180
+set dterm_lpf1_static_hz = 90
+set dterm_lpf2_static_hz = 180
 set vbat_sag_compensation = 100
 set iterm_relax_type = GYRO
 set iterm_relax_cutoff = 12
-set p_pitch = 59
-set i_pitch = 127
-set d_pitch = 76
-set f_pitch = 139
-set p_roll = 56
-set i_roll = 120
-set d_roll = 74
-set f_roll = 134
-set p_yaw = 100
-set i_yaw = 100
+set p_pitch = 79
+set i_pitch = 170
+set d_pitch = 96
+set f_pitch = 129
+set p_roll = 76
+set i_roll = 162
+set d_roll = 83
+set f_roll = 124
+set p_yaw = 110
+set i_yaw = 110
 set f_yaw = 140
-set d_min_roll = 58
-set d_min_pitch = 59
-set thrust_linear = 30
+set d_min_roll = 66
+set d_min_pitch = 75
+set thrust_linear = 35
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 9
 set simplified_pids_mode = RP
-set simplified_master_multiplier = 140
+set simplified_master_multiplier = 130
 set simplified_i_gain = 120
-set simplified_d_gain = 140
-set simplified_pi_gain = 90
+set simplified_d_gain = 170
+set simplified_pi_gain = 130
 set simplified_dmax_gain = 80
 set simplified_feedforward_gain = 80
-set simplified_pitch_d_gain = 90
-set simplified_dterm_filter_multiplier = 140
-set tpa_rate = 75
+set simplified_dterm_filter_multiplier = 120
+set tpa_rate = 70
 
 profile 1
 
@@ -153,19 +153,34 @@ profile 0
 rateprofile 0
 
 # rateprofile 0
-set thr_mid = 35
+set rateprofile_name = FrStyl
+set thr_mid = 28
 set thr_expo = 40
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
-set yaw_rc_rate = 20
+set yaw_rc_rate = 18
 set roll_expo = 52
 set pitch_expo = 52
-set yaw_expo = 52
+set yaw_expo = 47
 set roll_srate = 95
 set pitch_srate = 95
 set yaw_srate = 90
 
 rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = Race
+set thr_mid = 28
+set thr_expo = 40
+set roll_rc_rate = 20
+set pitch_rc_rate = 18
+set yaw_rc_rate = 16
+set roll_expo = 38
+set pitch_expo = 38
+set yaw_expo = 35
+set roll_srate = 60
+set pitch_srate = 60
+set yaw_srate = 50
 
 rateprofile 2
 
@@ -176,4 +191,4 @@ rateprofile 0
 
 # save configuration
 save
-# 
+#

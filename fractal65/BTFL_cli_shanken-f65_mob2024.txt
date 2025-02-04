@@ -88,6 +88,8 @@ set vbat_min_cell_voltage = 320
 set vbat_warning_cell_voltage = 335
 set yaw_motors_reversed = ON
 set small_angle = 180
+set deadband = 1
+set yaw_deadband = 1
 set pid_process_denom = 2
 set simplified_gyro_filter_multiplier = 150
 set osd_rssi_pos = 314
@@ -105,6 +107,7 @@ set osd_warnings_pos = 2249
 set osd_avg_cell_voltage_pos = 2413
 set osd_disarmed_pos = 2314
 set osd_core_temp_pos = 34
+set osd_rate_profile_name_pos = 2369
 set osd_canvas_height = 13
 set vtx_band = 5
 set vtx_channel = 8
@@ -129,22 +132,22 @@ set iterm_relax_type = GYRO
 set yaw_lowpass_hz = 0
 set p_pitch = 61
 set i_pitch = 109
-set d_pitch = 69
+set d_pitch = 64
 set f_pitch = 146
 set p_roll = 58
 set i_roll = 104
-set d_roll = 67
+set d_roll = 62
 set f_roll = 140
 set p_yaw = 120
 set i_yaw = 120
-set d_min_roll = 50
-set d_min_pitch = 51
+set d_min_roll = 46
+set d_min_pitch = 47
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 8
 set simplified_pids_mode = RP
 set simplified_master_multiplier = 130
-set simplified_d_gain = 130
+set simplified_d_gain = 120
 set simplified_feedforward_gain = 90
 set simplified_pitch_d_gain = 90
 set simplified_dterm_filter_multiplier = 150
@@ -152,10 +155,10 @@ set simplified_dterm_filter_multiplier = 150
 profile 1
 
 # profile 1
-set dterm_lpf1_dyn_min_hz = 105
-set dterm_lpf1_dyn_max_hz = 210
-set dterm_lpf1_static_hz = 105
-set dterm_lpf2_static_hz = 210
+set dterm_lpf1_dyn_min_hz = 112
+set dterm_lpf1_dyn_max_hz = 225
+set dterm_lpf1_static_hz = 112
+set dterm_lpf2_static_hz = 225
 set dterm_notch_hz = 230
 set dterm_notch_cutoff = 200
 set vbat_sag_compensation = 100
@@ -163,32 +166,32 @@ set iterm_relax = RPY
 set iterm_relax_type = GYRO
 set iterm_relax_cutoff = 10
 set yaw_lowpass_hz = 0
-set p_pitch = 69
-set i_pitch = 137
-set d_pitch = 84
-set f_pitch = 167
-set p_roll = 60
-set i_roll = 118
-set d_roll = 60
-set f_roll = 145
-set p_yaw = 90
-set i_yaw = 112
+set p_pitch = 60
+set i_pitch = 129
+set d_pitch = 93
+set f_pitch = 160
+set p_roll = 52
+set i_roll = 112
+set d_roll = 67
+set f_roll = 140
+set p_yaw = 120
+set i_yaw = 120
 set f_yaw = 168
-set d_min_roll = 44
-set d_min_pitch = 60
-set thrust_linear = 2
+set d_min_roll = 50
+set d_min_pitch = 68
+set thrust_linear = 5
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 8
 set simplified_pids_mode = RP
-set simplified_master_multiplier = 135
-set simplified_i_gain = 110
-set simplified_d_gain = 110
-set simplified_dmax_gain = 110
+set simplified_master_multiplier = 130
+set simplified_i_gain = 120
+set simplified_d_gain = 130
+set simplified_pi_gain = 90
 set simplified_feedforward_gain = 90
 set simplified_pitch_d_gain = 120
 set simplified_pitch_pi_gain = 110
-set simplified_dterm_filter_multiplier = 140
+set simplified_dterm_filter_multiplier = 150
 set tpa_rate = 60
 set tpa_breakpoint = 1300
 
@@ -197,31 +200,46 @@ profile 2
 profile 3
 
 # restore original profile selection
-profile 0
+profile 1
 
 rateprofile 0
 
 # rateprofile 0
-set thr_mid = 38
-set thr_expo = 32
+set rateprofile_name = FrStyl
+set thr_mid = 41
+set thr_expo = 20
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
-set yaw_rc_rate = 20
-set roll_expo = 75
-set pitch_expo = 75
-set yaw_expo = 52
+set yaw_rc_rate = 18
+set roll_expo = 52
+set pitch_expo = 52
+set yaw_expo = 46
 set roll_srate = 95
 set pitch_srate = 95
-set yaw_srate = 90
+set yaw_srate = 85
 
 rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = Race
+set thr_mid = 41
+set thr_expo = 20
+set roll_rc_rate = 20
+set pitch_rc_rate = 18
+set yaw_rc_rate = 16
+set roll_expo = 38
+set pitch_expo = 38
+set yaw_expo = 35
+set roll_srate = 60
+set pitch_srate = 60
+set yaw_srate = 50
 
 rateprofile 2
 
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 1
 
 # save configuration
 save

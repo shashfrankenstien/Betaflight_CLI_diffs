@@ -1,9 +1,8 @@
 # diff all
 
 # version
-# Betaflight / STM32F411 (S411) 4.4.0 Feb 22 2023 / 00:51:02 (4605309d8) MSP API: 1.45
-
-# config: YES
+# Betaflight / STM32F411 (S411) 4.5.1 Aug  1 2024 / 16:43:47 (77d01ba3b) MSP API: 1.46
+# config rev: ad0057e
 
 # start the command batch
 batch start
@@ -16,31 +15,21 @@ manufacturer_id HAMO
 mcu_id 004100633132510431373731
 signature 
 
-# name: Fractal75
+# name: fractal75
 
 # feature
-feature -RX_SERIAL
-feature LED_STRIP
-feature RX_SPI
+feature TELEMETRY
+feature OSD
 
 # serial
 serial 1 2048 115200 57600 0 115200
 
-# beacon
-beacon RX_LOST
-beacon RX_SET
-
 # aux
 aux 0 0 0 1800 2100 0 0
-aux 1 1 1 900 1300 0 0
+aux 1 1 1 900 1200 0 0
 aux 2 2 1 1300 1700 0 0
-aux 3 13 3 1800 2100 0 0
+aux 3 13 2 1775 2100 0 0
 aux 4 35 3 1800 2100 0 0
-
-# adjrange
-adjrange 0 0 2 1750 2100 29 2 0 0
-adjrange 1 0 2 900 1225 29 2 0 0
-adjrange 2 0 2 1300 1650 29 2 0 0
 
 # vtxtable
 vtxtable bands 6
@@ -52,223 +41,200 @@ vtxtable band 4 FATSHARK F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
 vtxtable band 5 RACEBAND R FACTORY 5658 5695 5732 5769 5806 5843 5880 5917
 vtxtable band 6 LOWRACE  L FACTORY 5333 5373 5413 5453 5493 5533 5573 5613
 vtxtable powerlevels 5
-vtxtable powervalues 10 2 14 20 26
+vtxtable powervalues 1 2 14 20 26
 vtxtable powerlabels 0 RCE 25 100 400
 
 # master
 set gyro_lpf1_static_hz = 0
-set gyro_lpf2_static_hz = 600
+set gyro_lpf2_static_hz = 700
 set dyn_notch_count = 1
 set dyn_notch_q = 500
 set gyro_lpf1_dyn_min_hz = 0
-set gyro_lpf1_dyn_max_hz = 300
-set acc_calibration = 13,-81,8,1
+set acc_calibration = 30,9,29,1
 set rc_smoothing_auto_factor = 52
+set dshot_idle_value = 800
 set dshot_bidir = ON
-set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
 set motor_output_reordering = 2,3,0,1,4,5,6,7
 set vbat_max_cell_voltage = 440
-set vbat_min_cell_voltage = 310
-set vbat_warning_cell_voltage = 330
-set ibata_scale = 470
+set vbat_min_cell_voltage = 320
+set vbat_warning_cell_voltage = 335
 set small_angle = 180
 set deadband = 1
 set yaw_deadband = 1
-set simplified_gyro_filter_multiplier = 120
-set osd_warn_bitmask = 2047
-set osd_rssi_pos = 314
-set osd_link_quality_pos = 344
+set pid_process_denom = 2
+set simplified_gyro_filter_multiplier = 140
+set osd_warn_bitmask = 8191
+set osd_vbat_pos = 341
+set osd_rssi_pos = 341
+set osd_link_quality_pos = 2391
+set osd_link_tx_power_pos = 341
 set osd_rssi_dbm_pos = 2424
+set osd_rsnr_pos = 341
+set osd_tim_1_pos = 341
 set osd_tim_2_pos = 2455
-set osd_flymode_pos = 2406
+set osd_remaining_time_estimate_pos = 341
+set osd_flymode_pos = 2405
+set osd_anti_gravity_pos = 341
+set osd_g_force_pos = 341
 set osd_throttle_pos = 2420
 set osd_vtx_channel_pos = 2433
+set osd_crosshairs_pos = 312
+set osd_ah_sbar_pos = 313
+set osd_ah_pos = 185
 set osd_current_pos = 288
-set osd_mah_drawn_pos = 320
-set osd_craft_name_pos = 14369
+set osd_mah_drawn_pos = 341
+set osd_wh_drawn_pos = 341
+set osd_motor_diag_pos = 341
+set osd_craft_name_pos = 2081
+set osd_pilot_name_pos = 341
+set osd_gps_speed_pos = 341
+set osd_gps_lon_pos = 341
+set osd_gps_lat_pos = 341
+set osd_gps_sats_pos = 341
+set osd_home_dir_pos = 341
+set osd_home_dist_pos = 341
+set osd_flight_dist_pos = 341
+set osd_compass_bar_pos = 341
+set osd_altitude_pos = 341
+set osd_pid_roll_pos = 341
+set osd_pid_pitch_pos = 341
+set osd_pid_yaw_pos = 341
+set osd_debug_pos = 341
+set osd_power_pos = 341
 set osd_pidrate_profile_pos = 2401
-set osd_warnings_pos = 14633
-set osd_avg_cell_voltage_pos = 14700
+set osd_warnings_pos = 2249
+set osd_avg_cell_voltage_pos = 2413
+set osd_pit_ang_pos = 341
+set osd_rol_ang_pos = 341
+set osd_battery_usage_pos = 341
 set osd_disarmed_pos = 2314
-set osd_esc_rpm_pos = 161
-set osd_core_temp_pos = 280
-set osd_stat_bitmask = 1836
-set osd_canvas_width = 30
+set osd_nheading_pos = 341
+set osd_up_down_reference_pos = 312
+set osd_ready_mode_pos = 341
+set osd_esc_tmp_pos = 341
+set osd_esc_rpm_pos = 341
+set osd_esc_rpm_freq_pos = 341
+set osd_rtc_date_time_pos = 341
+set osd_adjustment_range_pos = 341
+set osd_flip_arrow_pos = 341
+set osd_core_temp_pos = 34
+set osd_log_status_pos = 341
+set osd_stick_overlay_left_pos = 341
+set osd_stick_overlay_right_pos = 341
+set osd_rate_profile_name_pos = 2369
+set osd_pid_profile_name_pos = 341
+set osd_profile_name_pos = 341
+set osd_rcchannels_pos = 341
+set osd_camera_frame_pos = 142
+set osd_efficiency_pos = 341
+set osd_total_flights_pos = 341
+set osd_aux_pos = 341
+set osd_sys_goggle_voltage_pos = 341
+set osd_sys_vtx_voltage_pos = 341
+set osd_sys_bitrate_pos = 341
+set osd_sys_delay_pos = 341
+set osd_sys_distance_pos = 341
+set osd_sys_lq_pos = 341
+set osd_sys_goggle_dvr_pos = 341
+set osd_sys_vtx_dvr_pos = 341
+set osd_sys_warnings_pos = 341
+set osd_sys_vtx_temp_pos = 341
+set osd_sys_fan_speed_pos = 341
 set osd_canvas_height = 13
-set debug_mode = RX_EXPRESSLRS_SPI
 set vtx_band = 5
 set vtx_channel = 8
 set vtx_power = 3
-set vtx_low_power_disarm = UNTIL_FIRST_ARM
 set vtx_freq = 5917
+set vcd_video_system = NTSC
 set gyro_1_sensor_align = CW90FLIP
 set gyro_1_align_pitch = 1800
 set expresslrs_uid = 74,41,14,5,199,104
 set expresslrs_rate_index = 1
 set expresslrs_switch_mode = HYBRID
-set rpm_filter_harmonics = 1
-set craft_name = Fractal75
+set craft_name = fractal75
+set pilot_name = shankenwhoop
 
 profile 0
 
 # profile 0
-set dterm_lpf1_static_hz = 0
+set dterm_lpf1_dyn_min_hz = 105
+set dterm_lpf1_dyn_max_hz = 210
+set dterm_lpf1_static_hz = 105
+set dterm_lpf2_static_hz = 210
 set vbat_sag_compensation = 100
-set anti_gravity_gain = 45
-set iterm_relax_cutoff = 20
-set yaw_lowpass_hz = 0
-set p_pitch = 112
-set i_pitch = 130
-set d_pitch = 74
-set f_pitch = 204
-set p_roll = 119
-set i_roll = 138
-set d_roll = 77
-set f_roll = 218
-set p_yaw = 119
-set i_yaw = 138
-set f_yaw = 218
-set d_min_roll = 77
-set d_min_pitch = 74
-set d_max_advance = 0
+set iterm_relax_type = GYRO
+set p_pitch = 70
+set i_pitch = 151
+set d_pitch = 95
+set f_pitch = 149
+set p_roll = 67
+set i_roll = 144
+set d_roll = 83
+set f_roll = 143
+set p_yaw = 110
+set i_yaw = 110
+set f_yaw = 140
+set d_min_roll = 60
+set d_min_pitch = 68
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 8
-set feedforward_max_rate_limit = 95
-set simplified_master_multiplier = 140
-set simplified_i_gain = 65
-set simplified_d_gain = 185
-set simplified_pi_gain = 190
-set simplified_dmax_gain = 0
-set simplified_feedforward_gain = 130
-set simplified_pitch_d_gain = 85
-set simplified_pitch_pi_gain = 90
-set tpa_breakpoint = 1250
+set simplified_pids_mode = RP
+set simplified_master_multiplier = 150
+set simplified_i_gain = 120
+set simplified_d_gain = 135
+set simplified_dmax_gain = 110
+set simplified_feedforward_gain = 80
+set simplified_dterm_filter_multiplier = 140
 
 profile 1
 
-# profile 1
-set vbat_sag_compensation = 100
-set anti_gravity_gain = 45
-set p_pitch = 84
-set i_pitch = 136
-set d_pitch = 53
-set f_pitch = 149
-set p_roll = 81
-set i_roll = 129
-set d_roll = 46
-set f_roll = 143
-set p_yaw = 81
-set i_yaw = 129
-set f_yaw = 143
-set d_min_roll = 46
-set d_min_pitch = 53
-set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 45
-set feedforward_jitter_factor = 8
-set simplified_master_multiplier = 120
-set simplified_i_gain = 90
-set simplified_d_gain = 130
-set simplified_pi_gain = 150
-set simplified_dmax_gain = 0
-
 profile 2
 
-# profile 2
-set dterm_lpf1_dyn_min_hz = 97
-set dterm_lpf1_dyn_max_hz = 195
-set dterm_lpf1_static_hz = 97
-set dterm_lpf2_static_hz = 195
-set dterm_notch_hz = 230
-set dterm_notch_cutoff = 200
-set vbat_sag_compensation = 100
-set iterm_relax_type = GYRO
-set iterm_relax_cutoff = 12
-set yaw_lowpass_hz = 0
-set p_pitch = 56
-set i_pitch = 110
-set d_pitch = 64
-set f_pitch = 119
-set p_roll = 53
-set i_roll = 105
-set d_roll = 56
-set f_roll = 115
-set p_yaw = 53
-set i_yaw = 105
-set f_yaw = 115
-set d_min_roll = 43
-set d_min_pitch = 48
-set thrust_linear = 10
-set dyn_idle_min_rpm = 50
-set simplified_master_multiplier = 120
-set simplified_i_gain = 110
-set simplified_d_gain = 120
-set simplified_dmax_gain = 90
-set simplified_feedforward_gain = 80
-set simplified_dterm_filter_multiplier = 130
-set tpa_rate = 60
-
 profile 3
-
-# profile 3
-set dterm_lpf1_dyn_min_hz = 90
-set dterm_lpf1_dyn_max_hz = 180
-set dterm_lpf1_static_hz = 90
-set dterm_lpf2_static_hz = 180
-set p_pitch = 48
-set i_pitch = 87
-set d_pitch = 59
-set f_pitch = 146
-set p_roll = 46
-set i_roll = 83
-set d_roll = 52
-set f_roll = 140
-set p_yaw = 46
-set i_yaw = 83
-set f_yaw = 140
-set d_min_roll = 39
-set d_min_pitch = 44
-set simplified_master_multiplier = 130
-set simplified_pi_gain = 80
-set simplified_feedforward_gain = 90
-set simplified_dterm_filter_multiplier = 120
 
 # restore original profile selection
-profile 3
+profile 0
 
 rateprofile 0
 
 # rateprofile 0
-set thr_mid = 28
+set rateprofile_name = FrStyl
+set thr_mid = 32
 set thr_expo = 40
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
-set yaw_rc_rate = 20
+set yaw_rc_rate = 18
 set roll_expo = 52
 set pitch_expo = 52
-set yaw_expo = 52
+set yaw_expo = 46
 set roll_srate = 95
 set pitch_srate = 95
-set yaw_srate = 90
+set yaw_srate = 85
 
 rateprofile 1
 
-rateprofile 2
+# rateprofile 1
+set rateprofile_name = Race
+set thr_mid = 32
+set thr_expo = 40
+set roll_rc_rate = 20
+set pitch_rc_rate = 18
+set yaw_rc_rate = 16
+set roll_expo = 38
+set pitch_expo = 38
+set yaw_expo = 35
+set roll_srate = 60
+set pitch_srate = 60
+set yaw_srate = 50
 
-# rateprofile 2
-set rates_type = BETAFLIGHT
-set roll_rc_rate = 110
-set pitch_rc_rate = 110
-set yaw_rc_rate = 100
-set roll_srate = 75
-set pitch_srate = 75
-set yaw_srate = 70
+rateprofile 2
 
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 1
 
 # save configuration
 save
