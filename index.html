@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actual Rates Comparison</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+
+    <style>
+        html {
+            background-color: #181a1b;
+        }
+        body {
+            display: flex;
+            flex-direction: row;
+        }
+        #myChart {
+            max-width: 75vw;
+            max-height: 90vh;
+        }
+        #controls {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+
+</head>
+<body>
+
+    <canvas id="myChart"></canvas>
+
+    <div id="controls">
+        <div id="curves">
+            <div class="curve">
+                <input type="number" min="0" max="1000" class="cntr" value="70" step="10">
+                <input type="number" min="0" max="2000" class="maxr" value="600" step="10">
+                <input type="number" min="0" max="1" class="expo" value="0.5" step="0.01">
+                <input type="color" value="grey">
+            </div>
+            <div class="curve">
+                <input type="number" min="0" max="1000" class="cntr" value="70" step="10">
+                <input type="number" min="0" max="2000" class="maxr" value="600" step="10">
+                <input type="number" min="0" max="1" class="expo" value="0.5" step="0.01">
+                <input type="color" value="#ff0000">
+            </div>
+            <div class="curve">
+                <input type="number" min="0" max="1000" class="cntr" value="70" step="10">
+                <input type="number" min="0" max="2000" class="maxr" value="600" step="10">
+                <input type="number" min="0" max="1" class="expo" value="0.5" step="0.01">
+                <input type="color" value="lightblue">
+            </div>
+        </div>
+        <div>
+            <input type="number" min="0" max="1" id="min_deflection" value="0" step="0.1">
+            <input type="number" min="0" max="1" id="max_deflection" value="1" step="0.1">
+        </div>
+    </div>
+
+</body>
+
+
+<script>
+
+    const interval = 0.05
+    const tension = 0.3
+    const lineWidth = 1
+
+    const ctx = document.getElementById('myChart');
+    const chart = new Chart(ctx, {
+        type: 'line',
+        // data: {
+        //     labels: labels,
+        //     datasets: tdog
+        // },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const plot_rate = (cntr, maxr, expo, labels) => {
+        const h = x =>  x * ((Math.pow(x, 5) * expo) + (x * (1-expo))) // Actual Rates expo factor
+        const j = x => (cntr*x) + ((maxr - cntr) * h(x)) // Actual Rates Curve
+
+        const ys = []
+        for (x of labels) {
+            ys.push(j(x))
+        }
+        return ys
+    }
+
+
+    const getLabels = () => {
+
+        const min_deflection = parseFloat(document.getElementById('min_deflection').value)
+        const max_deflection = parseFloat(document.getElementById('max_deflection').value)
+
+        const labels = []
+        for (let i=min_deflection; i<=max_deflection+interval; i=i+interval) {
+            labels.push(Math.round(i*100)/100)
+        }
+
+        return labels
+    }
+
+
+    const getCurves = () => {
+        const curves = []
+        for (let elem of document.querySelectorAll('.curve')) {
+            curves.push({
+                cntr: parseInt(elem.querySelector('.cntr').value),
+                maxr: parseInt(elem.querySelector('.maxr').value),
+                expo: parseFloat(elem.querySelector('.expo').value),
+                color: elem.querySelector('[type="color"]').value
+            })
+        }
+        return curves
+    }
+
+
+
+    function updateChart() {
+
+        const labels = getLabels()
+        console.log(labels)
+        chart.data.labels = labels
+
+        const datasets = []
+        let i = 0
+        for (let c of getCurves()) {
+            if (chart.data.datasets.length <= i) {
+                chart.data.datasets.push({
+                    data: plot_rate(c.cntr, c.maxr, c.expo, labels),
+                    borderWidth: lineWidth,
+                    borderColor: c.color,
+                    tension: tension,
+                })
+            } else {
+                chart.data.datasets[i].data = plot_rate(c.cntr, c.maxr, c.expo, labels)
+                chart.data.datasets[i].borderWidth = lineWidth
+                chart.data.datasets[i].borderColor = c.color
+                chart.data.datasets[i].tension = tension
+            }
+            i++
+        }
+
+        chart.update()
+
+        // const yaw_datasets = [
+        //     {
+        //         data: plot_rate(cntr=180, maxr=850, expo=0.45, labels),
+        //         borderWidth: lineWidth,
+        //         borderColor: 'grey', // Red color with full opacity
+        //         tension: tension
+        //     },
+        //     {
+        //         data: plot_rate(cntr=200, maxr=640, expo=0.38, labels),
+        //         borderWidth: lineWidth,
+        //         borderColor: 'red', // Red color with full opacity
+        //         tension: tension
+        //     },
+
+        //     {
+        //         data: plot_rate(cntr=200, maxr=640, expo=0.25, labels),
+        //         borderWidth: lineWidth,
+        //         borderColor: 'lightblue', // Red color with full opacity
+        //         tension: tension
+        //     }
+        // ]
+
+        // const roll_datasets = [
+        //     {
+        //         data: plot_rate(cntr=150, maxr=950, expo=0.52, labels),
+        //         borderWidth: lineWidth,
+        //         borderColor: 'grey', // Red color with full opacity
+        //         tension: tension
+        //     },
+        //     {
+        //         data: plot_rate(cntr=190, maxr=800, expo=0.52, labels),
+        //         borderWidth: lineWidth,
+        //         borderColor: 'red', // Red color with full opacity
+        //         tension: tension
+        //     },
+
+        //     {
+        //         data: plot_rate(cntr=170, maxr=800, expo=0.4, labels),
+        //         borderWidth: lineWidth,
+        //         borderColor: 'lightblue', // Red color with full opacity
+        //         tension: tension
+        //     }
+        // ]
+
+        // const tdog = [
+        //     {
+        //         data: plot_rate(cntr=170, maxr=800, expo=0.4, labels),
+        //         borderWidth: lineWidth,
+        //         borderColor: 'lightblue', // Red color with full opacity
+        //         tension: tension
+        //     },
+        //     {
+        //         data: plot_rate(cntr=200, maxr=700, expo=0.59, labels),
+        //         borderWidth: lineWidth,
+        //         borderColor: 'lightgreen', // Red color with full opacity
+        //         tension: tension
+        //     }
+        // ]
+
+    }
+
+
+    function updateChart2() {
+        const labels = getLabels()
+        const roll_datasets = [
+            {
+                data: plot_rate(cntr=150, maxr=950, expo=0.52, labels),
+                borderWidth: lineWidth,
+                borderColor: 'grey', // Red color with full opacity
+                tension: tension
+            },
+            {
+                data: plot_rate(cntr=190, maxr=800, expo=0.52, labels),
+                borderWidth: lineWidth,
+                borderColor: 'red', // Red color with full opacity
+                tension: tension
+            },
+
+            {
+                data: plot_rate(cntr=170, maxr=800, expo=0.4, labels),
+                borderWidth: lineWidth,
+                borderColor: 'lightblue', // Red color with full opacity
+                tension: tension
+            }
+        ]
+
+        chart.data.datasets[1].data = roll_datasets[2].data
+        chart.update()
+    }
+
+
+
+    updateChart()
+    document.querySelectorAll('input').forEach(i=>{
+        i.oninput = (e)=>{
+            updateChart()
+        }
+    })
+
+
+    </script>
+
+</html>
